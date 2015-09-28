@@ -23,7 +23,7 @@ passport.use(new LocalStrategy(
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {});
+    res.render('index', {title: 'AtmarkCafe'});
 });
 
 router.get('/login', function (req, res) {

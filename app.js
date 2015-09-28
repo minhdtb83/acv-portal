@@ -15,12 +15,18 @@ var engine = require('ejs-locals');
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 var passport = require('passport');
 
 var expressSession = require('express-session');
-app.use(expressSession({secret: '12345678'}));
+app.use(expressSession({
+    secret: '12345678',
+    cookie: {maxAge: 60000},
+    resave: true,
+    saveUninitialized: true
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
